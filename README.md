@@ -1,12 +1,15 @@
-#描述：
+描述：
+-
     用于mysql数据库增量备份还原
 
 脚本逻辑：
+-
     备份数据库中所有innodb的所有库,原因是不都备份还原时无法覆盖ibdata1
     按天备份，第一次执行完全备份,之后检查备份目录下是否有日期目录(20180724)并且目录里是否有backup_type是full-backuped的备份，没有仍然做完全备份，有则基于上次备份做增量备份。
     还原时，选择两个列表，第一个是日期列表（需要还原哪天的备份），第二选择还原当天哪一个备份
 
 备份目录结构：
+-
 [root@localhost sql_bak]# ll 20180724/
 total 56
 drwxr-xr-x. 4 root root 4096 Jul 24 16:01 20180724160103        #备份目录
@@ -22,6 +25,7 @@ drwxr-x---. 4 root root 4096 Jul 24 16:07 20180724160754
 
 
 还原临时目录：
+-
 因为备份一旦执行还原就无法再被基于进行增量备份，所以还原时移动到临时目录
 [root@localhost tmp]# ll /tmp/xbackup_restore/
 total 20
@@ -32,6 +36,7 @@ drwxr-x---. 4 root root 4096 Jul 24 16:08 20180724160754
 -rw-r--r--. 1 root root   60 Jul 24 16:08 order                 #基准文件
 
 用法：
+-
 修改脚本开头的变量
     BACKUPDIR=/data0/sql_bak                                    #备份目录
     DATADIR=/data0/mysql/data                                   #数据库目录
