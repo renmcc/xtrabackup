@@ -42,12 +42,13 @@ drwxr-x---. 4 root root 4096 Jul 24 16:08 20180724160754
 用法：
 =
 修改脚本开头的变量
+```
     BACKUPDIR=/data0/sql_bak                                    #备份目录 
     DATADIR=/data0/mysql/data                                   #数据库目录 
     DBCONF=/etc/my.cnf                                          #配置文件 
     DBUSER=root 
     DBPASSWD='123456' 
-    
+```    
     备份
     sh xtrabackup.sh backup 
     
